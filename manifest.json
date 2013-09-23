@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+
+    "name": "Pax autocomplete extension",
+    "description": "This extension is for checkout_form page autocomplete",
+    "version": "1.0",
+
+    "permissions": [
+        "tabs"
+    ],
+
+    "background": {
+        "scripts": ["background.js"]
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["file:///*/*"],
+            "js": ["pax_fill.js"]
+        }
+    ],
+
+    "browser_action":{
+        "default_icon": "icon.png"
+    }
+}
