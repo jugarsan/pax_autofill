@@ -1,32 +1,52 @@
-/**
- * Created with IntelliJ IDEA.
- * User: jugarsan
- * Date: 9/2/13
- * Time: 8:50 PM
- * To change this template use File | Settings | File Templates.
- */
+
+var dispatchMouseEvents = function (target, args){
+    var e = document.createEvent("MouseEvents");
+    e.initEvent.apply(e, Array.prototype.slice.call(arguments, 1));
+    target.dispatchEvent(e);
+}
 
 function fillForms(pax_info_repository){
-    var firstName = document.getElementsByName("firstName");
-    var lastName = document.getElementsByName("lastName");
-    var address = document.getElementsByName("address");
-    var city = document.getElementsByName("state");
-    var country = document.getElementsByName("country");
-    var year = document.getElementsByName("year");
-    var month = document.getElementsByName("month");
-    var day = document.getElementsByName("day");
+
+
+    var firstName = document.getElementsByClassName("automation-firstName");
+    var lastName = document.getElementsByClassName("automation-lastName");
+
+    //DOB could be required for any component. Looking for those elements, just in case.
+    var year = document.getElementsByClassName("Year");
+    var month = document.getElementsByClassName("Month");
+    var day = document.getElementsByClassName("Day");
+
+    //The following applies only to Lead Traveler
+    var address = document.getElementsByClassName("automation-address");
+    var city = document.getElementsByClassName("automation-city");
+    var zip = document.getElementsByClassName("automation-zip");
+
 
     if(firstName.length > 0){
         for(var i = 0; i < firstName.length; i++){
             firstName[i].value = pax_info_repository.pax_names[i][0];
             lastName[i].value = pax_info_repository.pax_names[i][2];
-            address[i].value = pax_info_repository.contact_info.address;
-            city[i].value = pax_info_repository.contact_info.state;
-            country[i].value = pax_info_repository.contact_info.country;
-            year[i].selectedIndex = i;
-            month[i].selectedIndex = i;
-            day[i].selectedIndex = i;
+            lastName[i].focus();
+
+            if(year[i] != null){
+                year[i].selectedIndex = i + 1;
+                month[i].selectedIndex = i + 1;
+                day[i].selectedIndex = i + 1;
+            }
         }
+        address[0].value = pax_info_repository.contact_info.address;
+        city[0].value = pax_info_repository.contact_info.state;
+        zip[0].value = pax_info_repository.contact_info.zip;
+    }
+
+    checkAutoFillTraveler();
+}
+
+function checkAutoFillTraveler(){
+    var autofill_radio = document.getElementsByClassName("automation-autoFillTraveler");
+    if(autofill_radio.length > 0){
+        autofill_radio[0].checked = true;
+        dispatchMouseEvents(autofill_radio[0], 'click', true, true);
     }
 }
 

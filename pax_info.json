@@ -1,17 +1,18 @@
 {
     "pax_names": {
-        "0": ["danny","","ocean"],
-        "1": ["rusty","","ryan"],
-        "2": ["jack","","sparrow"],
-        "3": ["bilbo","","baggins"],
-        "4": ["gandalf","the","grey"],
-        "5": ["holly","","golightly"]
+        "0": ["Danny","","Ocean"],
+        "1": ["Rusty","","Ryan"],
+        "2": ["Jack","","Sparrow"],
+        "3": ["Bilbo","","Baggins"],
+        "4": ["Gandalf","The","Grey"],
+        "5": ["Holly","","Golightly"]
     },
 
     "contact_info":
     {
         "address": "test address",
         "city": "test city",
+        "zip": "99999",
         "state": "test state",
         "country": "test country",
         "telephone": "555555",

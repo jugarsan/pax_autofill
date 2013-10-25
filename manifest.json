@@ -6,7 +6,8 @@
     "version": "1.0",
 
     "permissions": [
-        "tabs"
+        "tabs",
+        "*://*.switchfly.com/"
     ],
 
     "background": {
@@ -15,7 +16,7 @@
 
     "content_scripts": [
         {
-            "matches": ["file:///*/*"],
+            "matches": ["<all_urls>"],
             "js": ["pax_fill.js"]
         }
     ],
