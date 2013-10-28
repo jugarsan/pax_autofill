@@ -7,7 +7,7 @@ var sendMessage = function(paxRepository){
 
 function sendPaxsToContentScript(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", chrome.extension.getURL('pax_info.json'), true);
+    xhr.open("GET", chrome.extension.getURL('data/pax_info.json'), true);
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4){
             sendMessage(JSON.parse(xhr.response));
