@@ -18,3 +18,5 @@ function sendPaxsToContentScript(){
 
 
 chrome.browserAction.onClicked.addListener(sendPaxsToContentScript);
+
+chrome.commands.onCommand.addListener(sendPaxsToContentScript);
