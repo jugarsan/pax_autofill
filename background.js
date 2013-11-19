@@ -5,7 +5,7 @@ var sendMessage = function(paxRepository){
     });
 };
 
-function sendPaxsToContentScript(){
+var sendPaxsToContentScript = function(){
     var xhr = new XMLHttpRequest();
     xhr.open("GET", chrome.extension.getURL('data/pax_info.json'), true);
     xhr.onreadystatechange = function(){
@@ -14,7 +14,7 @@ function sendPaxsToContentScript(){
         }
     };
     xhr.send();
-}
+};
 
 
 chrome.browserAction.onClicked.addListener(sendPaxsToContentScript);
