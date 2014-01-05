@@ -40,22 +40,25 @@ var paxFormFill = {
         var city = document.getElementsByClassName("automation-city");
         var zip = document.getElementsByClassName("automation-zip");
 
+        var repositoryNameRecord = 0;
 
         if(firstName.length > 0){
             for(var i = 0; i < firstName.length; i++){
-                this.lookAndSelectTitle(i);
-                firstName[i].value = pax_info_repository.pax_names[i][0];
-                lastName[i].value = pax_info_repository.pax_names[i][2];
-                lastName[i].focus();
+               if(firstName[i].value == ""){
+                  this.lookAndSelectTitle(i);
+                  firstName[i].value = pax_info_repository.pax_names[repositoryNameRecord][0];
+                  lastName[i].value = pax_info_repository.pax_names[repositoryNameRecord][2];
+                  lastName[i].focus();
 
-                if(year[i] != null){
-                    year[i].selectedIndex = i + 1;
-                    month[i].selectedIndex = i + 1;
-                    day[i].selectedIndex = i + 1;
-                }
+                  if(year[i] != null){
+                     year[i].selectedIndex = i + 50;
+                     month[i].selectedIndex = i + 1;
+                     day[i].selectedIndex = i + 1;
+                  }
 
-                this.checkPaxGender(i);
-
+                  this.checkPaxGender(i);
+                  repositoryNameRecord++;
+               }
             }
             address[0].value = pax_info_repository.contact_info.address;
             city[0].value = pax_info_repository.contact_info.state;
@@ -63,5 +66,5 @@ var paxFormFill = {
         }
 
         this.checkAutoFillTraveler();
-     }
+    }
 };
